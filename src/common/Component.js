@@ -1,15 +1,30 @@
-export class Component {
+export default class Component {
   constructor(props = {}) {
-    this.props = props
-    this.element = null
+    this.props = props;
+    this.state = {};
+    this.element = null;
+  }
+
+  setState(newState) {
+    this.state = { ...this.state, ...newState };
+    this.update();
+  }
+
+  mount() {
+    this.element = this.render();
+    this.update();
+    return this.element;
+  }
+
+  update() {
+    if (this.element) {
+      const newElement = this.render();
+      this.element.replaceWith(newElement);
+      this.element = newElement;
+    }
   }
 
   render() {
-    throw new Error('Component should have a mount() method!')
-  }
-
-  mount(container) {
-    this.element = this.render()
-    container.appendChild(this.element)
+    return document.createElement('div');
   }
 }

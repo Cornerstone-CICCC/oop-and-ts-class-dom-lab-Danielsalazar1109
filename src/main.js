@@ -1,7 +1,10 @@
-import { App } from "./components/App.js";
+import AddTodo from './components/AddTodo.js';
+import TodoList from './components/TodoList.js';
+import TodoItem from './components/TodoItem.js';
 
-const root = document.querySelector('#app')
-
-const app = new App()
-
-app.mount(root)
+document.addEventListener('DOMContentLoaded', () => {
+  const todoList = new TodoList();
+  const addTodo = new AddTodo(todoList);
+  addTodo.init();
+  todoList.render(); 
+});

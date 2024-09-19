@@ -1,10 +1,6 @@
-import { Component } from "../common/Component.js";
-
-export class TodoItem extends Component {
-  render() {
-    const todoElement = document.createElement('li')
-    todoElement.className = "todo-item"
-
-    return todoElement;
+export default class TodoItem {
+  constructor(description) {
+    this.description = description;
+    this.completed = false; 
   }
 }
